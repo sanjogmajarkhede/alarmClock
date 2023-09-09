@@ -1,0 +1,26 @@
+<template>
+    <div class="appCard">
+        <h1>Alarm Clock</h1>
+        <img src={clockImage} height="200px" width="200px" class={shakeImage}>
+        <h2>{currentTime}</h2>
+        <section>
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <c-alarm-clock-inputs options={hours} label="Hours" unique-id="select-hours" onoptionchange={optionChangeEventHandler}></c-alarm-clock-inputs>                   
+                </div>
+                <div class="slds-col">
+                    <c-alarm-clock-inputs options={minutes} label="Minutes" unique-id="select-minutes" onoptionchange={optionChangeEventHandler}></c-alarm-clock-inputs>
+                </div>
+                <div class="slds-col">
+                    <c-alarm-clock-inputs options={meridiems} label="Meridiems" unique-id="select-meridiems" onoptionchange={optionChangeEventHandler}></c-alarm-clock-inputs>
+                </div>
+            </div>
+        </section>
+        <template if:false={isAlarmActive}>
+            <button class="slds-button slds-button_neutral slds-button_stretch" onclick={setAlarmTime} disabled = {isSetAlarmDisabled}>Set Alarm</button>
+        </template>
+        <template if:true={isAlarmActive}>
+            <button class="slds-button slds-button_neutral slds-button_stretch" onclick={clearAlarmTime}>Clear Time</button>
+        </template>
+    </div>
+</template>
